@@ -34,7 +34,7 @@ const CheckoutItems = () => {
         <div className="row">
         <div className="col-md-6">
             <div className="form-group mb-3">
-              <label>Street Address</label>
+              <label>Phone Number</label>
               <input type="text" name="first-name" className="form-control"></input>
             </div>
           </div>
@@ -46,19 +46,41 @@ const CheckoutItems = () => {
           </div>
         </div>
         <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-12">
             <div className="form-group mb-3">
-              <label>Street Address</label>
-              <input type="text" name="first-name" className="form-control"></input>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <div className="form-group mb-3">
-              <label>Email Address</label>
-              <input type="text" name="first-name" className="form-control"></input>
+              <label>Full Address</label>
+              <textarea type="text" name="first-name" className="form-control"></textarea>
             </div>
           </div>
         </div>
+        <div className="row">
+        <div className="col-md-4">
+            <div className="form-group mb-3">
+              <label>City</label>
+              <input type="text" name="first-name" className="form-control"></input>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="form-group mb-3">
+              <label>State</label>
+              <input type="text" name="first-name" className="form-control"></input>
+            </div>
+          </div>
+          <div className="col-md-4">
+            <div className="form-group mb-3">
+              <label>Zip Code</label>
+              <input type="text" name="first-name" className="form-control"></input>
+            </div>
+          </div>
+          <div className="col-md-12">
+            <div className="form-group text-end">
+              <button type="button" className="btn btn-primary">
+                Place Order
+              </button>
+            </div>
+          </div>
+        </div>
+        
       </div>
 
     
