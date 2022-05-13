@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Route, Link, BrowserRouter as Router } from "react-router-dom";
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-
+import CheckoutItems from "./components/Checkout";
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
@@ -176,6 +176,15 @@ export default class App extends Component {
                     {Object.keys(this.state.cart).length}
                   </span>
                 </Link>
+                <Link to="/checkout" className="navbar-item">
+                  Checkout
+                  <span
+                    className="tag is-primary"
+                    style={{ marginLeft: "5px" }}
+                  >
+                  </span>
+                
+                </Link>
                 {!this.state.user ? (
                   <Link to="/login" className="navbar-item">
                     Login
@@ -191,6 +200,7 @@ export default class App extends Component {
               <Route exact path="/" component={ProductList} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/cart" component={Cart} />
+              <Route exact path="/checkout" component={CheckoutItems} />
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
             </Switch>
