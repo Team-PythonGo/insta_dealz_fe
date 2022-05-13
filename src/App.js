@@ -7,7 +7,7 @@ import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import ProductList from './components/ProductList';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Context from "./Context";
 
 export default class App extends Component {
