@@ -80,11 +80,35 @@ const CheckoutItems = () => {
             </div>
           </div>
         </div>
-        
+      
       </div>
-
-    
-        
+      <div className="card">
+        <div className="card-header">
+          <h6 className="title"> Basic Information</h6>
+        </div>
+        <div className="card-body">
+        <div className="col-md-5">
+        <table className="table table-bordered">
+          <thead>
+              <tr>
+                <th width="50%">Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+          </thead>    
+          <tbody>
+            <tr>
+              <td>hello</td>
+              <td>this is</td>
+              <td>a placeholder</td>
+              <td>for everything</td>
+            </tr>
+          </tbody>     
+        </table>
+      </div>
+        </div>
+      </div>
     </div>
     </>
   )
