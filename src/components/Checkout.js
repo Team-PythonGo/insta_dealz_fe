@@ -14,10 +14,12 @@ import { Accordion } from "react-bootstrap";
 // import {Link } from "react-router-dom";
 
 
-const CheckoutItems = () => {
+const CheckoutItems = (props) => {
   const history = useHistory();
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState([props]);
+ 
+
   let totalCartPrice = 0;
 
 
@@ -28,7 +30,7 @@ const CheckoutItems = () => {
 
   useEffect(()=> {
     let isMounted = true;
-    axios.get('/localhost:3001/products').then(res=>{
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/`).then(res=>{
       if(isMounted)
       {
         if(res.data.status === 200)
@@ -61,14 +63,8 @@ const CheckoutItems = () => {
     <br />
 
 
-    
-    <Accordion defaultActiveKey="0" style={{marginTop:'15px'}}>
-      <Accordion.Header><h6 className="title"> Shipping Information</h6></Accordion.Header>
-      <Accordion.Body>This is the Body</Accordion.Body>
-
-    </Accordion>
     <div className="columns">
-    <div className="column is-half ">
+    <div className="column is-half ml-2 ">
     <div className="card">
       <div className="card-header">
       <h6 className="title"> Shipping Information</h6>
@@ -163,10 +159,16 @@ const CheckoutItems = () => {
 
 <div class="input-group">
 <input class="form-control" type="text" placeholder="0000 0000 0000 0000" autocomplete="email"></input>
+
 <div class="input-group-append">
-
-<i class="mdi mdi-credit-card"></i>
-
+<div class="input-group-append">
+<span class="input-group-text">
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+</svg>
+</span>
+</div>
 </div>
 </div> 
 </div>
@@ -205,7 +207,7 @@ const CheckoutItems = () => {
 <option>2024</option>
 <option>2025</option>
 <option>2026</option>
-<option>202</option>
+<option>2027</option>
 </select>
 </div>
 <div class="col-sm-4">
@@ -246,7 +248,7 @@ const CheckoutItems = () => {
       </div>
 
     
-      <div className="column is-half">
+      <div className="column is-two-fifths ml-5  ">
       <div className="card ">
         <div className="card-header ">
           <h6 className="title"> Cart </h6>
@@ -264,14 +266,14 @@ const CheckoutItems = () => {
           </thead>    
           <tbody>
             {/* cart instead of props.Cart works */}
-            {cart.map((item,idx)=> {
-              totalCartPrice += item.product.price * item.amount;
+            {cart.map((cart,idx)=> {
+              totalCartPrice += cart.price * cart.amount;
               return(
             <tr key={idx}>
-              <td>{item.product.name}</td>
-              <td>{item.product.price}</td>
-              <td>{item.amount}</td>
-              <td>{item.product.price * item.amount}</td>
+              <td>{cart.name}</td>
+              <td>{cart.price}</td>
+              <td>{cart.amount}</td>
+              <td>{cart.price * cart.amount}</td>
             </tr>
             )
           })}

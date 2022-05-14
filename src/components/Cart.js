@@ -37,7 +37,10 @@ const Cart = props => {
                 <Link to="/checkout">
                 <button
                   className="button is-success"
-                  onClick={props.context.checkout} 
+                  onClick={() =>
+                    props.checkout(cartKeys
+                    )
+                  } 
                 >
                   Checkout
                 </button>

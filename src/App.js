@@ -112,7 +112,7 @@ export default class App extends Component {
       if (cart[p.name]) {
         p.stock = p.stock - cart[p.name].amount;
 
-        axios.put(`http://localhost:3001/products/${p.id}`, { ...p });
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/${p.id}`, { ...p });
       }
       return p;
     });
