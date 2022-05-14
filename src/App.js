@@ -129,7 +129,8 @@ export default class App extends Component {
           login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
-          checkout: this.checkout
+          checkout: this.checkout,
+          CheckoutItems:this.CheckoutItems,
         }}
       >
         <Router ref={this.routerRef}>
@@ -201,6 +202,7 @@ export default class App extends Component {
               <Route exact path="/login" component={Login} />
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/checkout" component={CheckoutItems} />
+              {/* cant  pass state via component */}
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
             </Switch>
