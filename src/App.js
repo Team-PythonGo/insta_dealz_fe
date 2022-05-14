@@ -7,19 +7,25 @@ import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import ProductList from './components/ProductList';
+import ProductDetail from './components/productDetail';
+
+
 
 import Context from './Context';
 
+
 export default class App extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       user: null,
       cart: {},
       products: [],
+      selectedProduct: {}
     };
     this.routerRef = React.createRef();
   }
+
 
   async componentDidMount() {
     let user = localStorage.getItem('user');
@@ -117,6 +123,12 @@ export default class App extends Component {
     this.setState({ products });
     this.clearCart();
   };
+  handleSelctedProduct = (selectedProduct) => {
+    this.setState({
+      selectedProduct,
+    })
+
+  }
 
   render() {
     return (
@@ -129,6 +141,7 @@ export default class App extends Component {
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
+          handleSelctedProduct: this.handleSelctedProduct
         }}
       >
         <Router ref={this.routerRef}>
@@ -157,9 +170,8 @@ export default class App extends Component {
                 </label>
               </div>
               <div
-                className={`navbar-menu ${
-                  this.state.showMenu ? 'is-active' : ''
-                }`}
+                className={`navbar-menu ${this.state.showMenu ? 'is-active' : ''
+                  }`}
               >
                 <Link to="/products" className="navbar-item">
                   Products
@@ -187,6 +199,9 @@ export default class App extends Component {
                     Logout
                   </Link>
                 )}
+                <Link to="/products-detail">
+                  Products Detail
+                </Link>
               </div>
             </nav>
             <Switch>
@@ -195,6 +210,8 @@ export default class App extends Component {
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
+              <Route exact path="/products-detail" component={ProductDetail} />
+
             </Switch>
           </div>
         </Router>

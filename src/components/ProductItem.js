@@ -7,7 +7,11 @@ const ProductItem = (props) => {
       <div className="box">
         <div className="media">
           <div className="media-left">
-            <figure className="image is-64x64">
+            <figure className="image is-64x64" onClick={() =>
+
+              console.log("clicked", product.name, props)
+
+            }>
               <img src={product.image} alt={product.name} />
             </figure>
           </div>
