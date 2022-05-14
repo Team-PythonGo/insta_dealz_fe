@@ -6,11 +6,13 @@ import jwt_decode from 'jwt-decode';
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import ProductList from './components/ProductList';
+import { withAuth0 } from '@auth0/auth0-react';
 
 import Context from './Context';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,15 +26,25 @@ export default class App extends Component {
   async componentDidMount() {
     let user = localStorage.getItem('user');
     let cart = localStorage.getItem('cart');
+    const { getAccessTokenSilently } = this.props.auth0;
 
-    const products = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/products/`
-    );
-    user = user ? JSON.parse(user) : null;
-    cart = cart ? JSON.parse(cart) : {};
+    try {
+      const token = await getAccessTokenSilently();
+      const products = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/products/`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
+      );
+      user = user ? JSON.parse(user) : null;
+      cart = cart ? JSON.parse(cart) : {};
 
-    console.log(products.data);
-    this.setState({ user, products: products.data, cart });
+      this.setState({ user, products: products.data, cart });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   login = async (email, password) => {
@@ -119,13 +131,14 @@ export default class App extends Component {
   };
 
   render() {
+    const { isAuthenticated, isLoading } = this.props.auth0;
     return (
       <Context.Provider
         value={{
           ...this.state,
           removeFromCart: this.removeFromCart,
           addToCart: this.addToCart,
-          login: this.login,
+          // login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
@@ -178,7 +191,15 @@ export default class App extends Component {
                     {Object.keys(this.state.cart).length}
                   </span>
                 </Link>
-                {!this.state.user ? (
+                {isLoading ? (
+                  <div>Loading ...</div>
+                ) : isAuthenticated ? (
+                  <Logout />
+                ) : (
+                  <Login />
+                )}
+
+                {/* {!this.state.user ? (
                   <Link to="/login" className="navbar-item">
                     Login
                   </Link>
@@ -186,7 +207,7 @@ export default class App extends Component {
                   <Link to="/" onClick={this.logout} className="navbar-item">
                     Logout
                   </Link>
-                )}
+                )} */}
               </div>
             </nav>
             <Switch>
@@ -202,3 +223,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withAuth0(App);
