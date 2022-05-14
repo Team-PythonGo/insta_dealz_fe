@@ -121,6 +121,9 @@ export default class App extends Component {
     this.clearCart();
   };
 
+  checkoutItems = (cart) => {
+  }
+
   render() {
     return (
       <Context.Provider

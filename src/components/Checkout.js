@@ -1,57 +1,15 @@
-// import "bulma/css/bulma.css";
 
-import { useEffect, useState } from "react";
-import axios from 'axios';
-import {Link, useHistory} from 'react-router-dom';
-// import { propTypes } from "react-bootstrap/esm/Image";
-import { Accordion } from "react-bootstrap";
-// import swal from 'sweetalert';
-// import {Cart} from './Cart';
-
-// import React from "react";
-// import withContext from "../withContext";
-// import CartItem from "./CartItem";
-// import {Link } from "react-router-dom";
-
+import withContext from "../withContext";
 
 const CheckoutItems = (props) => {
-  const history = useHistory();
-  const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([props]);
- 
+
+  const {cart} = props.context;
+  console.log(cart);
 
   let totalCartPrice = 0;
 
 
-  // if(!localStorage.getItem('auth_token')){
-  //   history.push('/');
-  //   swal('Warning','Error');
-  // }
 
-  useEffect(()=> {
-    let isMounted = true;
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/products/`).then(res=>{
-      if(isMounted)
-      {
-        if(res.data.status === 200)
-        {
-          setCart(res.data.cart);
-          setLoading(false);
-        }
-        // else if(res.data.status === 401)
-        // {
-        //   history.pushState('/');
-        //   swal('Warning','Error');
-        // }
-      }
-    });
-    return() => {
-      isMounted = false
-    };
-  }, [history]);
-  // if(loading){
-  //   return <h4>Loading Product Detail...</h4>
-  // }
   return (
     <>
     <div className="hero is-primary">
@@ -265,15 +223,14 @@ const CheckoutItems = (props) => {
               </tr>
           </thead>    
           <tbody>
-            {/* cart instead of props.Cart works */}
-            {cart.map((cart,idx)=> {
-              totalCartPrice += cart.price * cart.amount;
+            {Object.keys(cart).map((key,idx)=> {
+              totalCartPrice += cart[key].product.price * cart[key].amount;
               return(
             <tr key={idx}>
-              <td>{cart.name}</td>
-              <td>{cart.price}</td>
-              <td>{cart.amount}</td>
-              <td>{cart.price * cart.amount}</td>
+              <td>{cart[key].product.name}</td>
+              <td>{cart[key].product.price}</td>
+              <td>{cart[key].amount}</td>
+              <td>{cart[key].product.price * cart[key].amount}</td>
             </tr>
             )
           })}
@@ -293,4 +250,4 @@ const CheckoutItems = (props) => {
     </>
   )
 }
-export default CheckoutItems;
+export default withContext(CheckoutItems);
