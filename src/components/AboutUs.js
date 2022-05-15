@@ -19,7 +19,7 @@ class AboutUs extends React.Component {
       <br></br>
       <div className='columns is-fluid'>
         <div className='column is-half'>
-      <div class="card is-half">
+      <div class="card is-half ml-2">
   <div class="card-image">
     <figure class="image">
       <img src="https://bulma.io/images/placeholders/100x100.png" alt="Placeholder"></img>
@@ -34,7 +34,7 @@ class AboutUs extends React.Component {
       </div>
       <div class="media-content">
         <p class="title is-4">Wenhao Piao</p>
-        <p class="subtitle is-6">https://www.linkedin.com/in/wenhaopiao/</p>
+        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/wenhaopiao/">https://www.linkedin.com/in/wenhaopiao/</a></p>
       </div>
     </div>
 
@@ -50,7 +50,7 @@ class AboutUs extends React.Component {
 
 <br></br>
 
-<div class="card is-half">
+<div class="card is-half ml-2">
   <div class="card-image">
     <figure class="image">
       <img src="https://bulma.io/images/placeholders/100x100.png" alt="Placeholder"></img>
@@ -65,7 +65,7 @@ class AboutUs extends React.Component {
       </div>
       <div class="media-content">
         <p class="title is-4">David Waiganjo</p>
-        <p class="subtitle is-6">https://www.linkedin.com/in/david-waiganjo-8185aa80/</p>
+        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/david-waiganjo-8185aa80/">https://www.linkedin.com/in/david-waiganjo-8185aa80/</a></p>
       </div>
     </div>
 
@@ -82,7 +82,7 @@ class AboutUs extends React.Component {
 </div>
 
 <div className="column is-half">
-<div class="card is-half">
+<div class="card is-half ml-0 mr-3">
   <div class="card-image">
     <figure class="image">
       <img src="https://bulma.io/images/placeholders/100x100.png" alt="Placeholder"></img>
@@ -97,7 +97,7 @@ class AboutUs extends React.Component {
       </div>
       <div class="media-content">
         <p class="title is-4">Arthur Lozano Jr</p>
-        <p class="subtitle is-6">https://www.linkedin.com/in/arthur-lozano/</p>
+        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/arthur-lozano/">https://www.linkedin.com/in/arthur-lozano/</a></p>
       </div>
     </div>
 
@@ -112,7 +112,7 @@ class AboutUs extends React.Component {
 
 <br></br>
 
-<div class="card is-half">
+<div class="card is-half ml-0 mr-3">
   <div class="card-image">
   </div>
   <div class="card-content">
@@ -127,7 +127,7 @@ class AboutUs extends React.Component {
       </div>
       <div class="media-content">
         <p class="title is-4">Brandon Mizutani</p>
-        <p class="subtitle is-6">https://www.linkedin.com/in/brandon-mizutani-273757213/</p>
+        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/brandon-mizutani-273757213/">https://www.linkedin.com/in/brandon-mizutani-273757213/</a></p>
       </div>
     </div>
 

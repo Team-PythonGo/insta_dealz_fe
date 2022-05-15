@@ -228,15 +228,15 @@ const CheckoutItems = (props) => {
               return(
             <tr key={idx}>
               <td>{cart[key].product.name}</td>
-              <td>{cart[key].product.price}</td>
+              <td>${cart[key].product.price}</td>
               <td>{cart[key].amount}</td>
-              <td>{cart[key].product.price * cart[key].amount}</td>
+              <td>${cart[key].product.price * cart[key].amount}</td>
             </tr>
             )
           })}
           <tr>
-            <td colSpan="2" className="text-end fw-bold">Grand Total</td>
-            <td colSpan="2" className="text-end fw-bold">{totalCartPrice}</td>
+            <td colSpan="2" className="text-end fw-bold">Total</td>
+            <td colSpan="2" className="text-end fw-bold">${totalCartPrice}</td>
           </tr>
           </tbody>     
         </table>

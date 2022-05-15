@@ -121,8 +121,6 @@ export default class App extends Component {
     this.clearCart();
   };
 
-  checkoutItems = (cart) => {
-  }
 
   render() {
     return (
@@ -145,8 +143,12 @@ export default class App extends Component {
               role="navigation"
               aria-label="main navigation"
             >
-              <div className="navbar-brand">
-                <b className="navbar-item is-size-4 ">insta-dealz</b>
+              <div className="navbar-brand"><Link to="/products"><Figure.Image width={200}
+        height={200}
+        src={logo}
+        alt="brandonImage"
+      /></Link>
+                <b className="navbar-item is-size-4 "></b>
                 <label
                   role="button"
                   className="navbar-burger burger"
