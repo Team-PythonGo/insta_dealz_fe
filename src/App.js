@@ -9,6 +9,7 @@ import Login from './components/Login';
 import ProductList from './components/ProductList';
 
 import Context from './Context';
+import Search from './components/Search';
 
 export default class App extends Component {
   constructor(props) {
@@ -97,6 +98,10 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
+  handleChange = (e, products) => { this.setState({ products }) };
+
+
+
   checkout = () => {
     if (!this.state.user) {
       this.routerRef.current.history.push('/login');
@@ -157,9 +162,8 @@ export default class App extends Component {
                 </label>
               </div>
               <div
-                className={`navbar-menu ${
-                  this.state.showMenu ? 'is-active' : ''
-                }`}
+                className={`navbar-menu ${this.state.showMenu ? 'is-active' : ''
+                  }`}
               >
                 <Link to="/products" className="navbar-item">
                   Products
@@ -188,6 +192,7 @@ export default class App extends Component {
                   </Link>
                 )}
               </div>
+              <Search onChange={(value) => (this.handleChange(value))} />
             </nav>
             <Switch>
               <Route exact path="/" component={ProductList} />

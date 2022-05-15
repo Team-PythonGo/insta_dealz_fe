@@ -3,7 +3,9 @@ import withContext from "../withContext";
 import CartItem from "./CartItem";
 
 const Cart = props => {
+  console.log('this is props context', props.context);
   const { cart } = props.context;
+  console.log('cart', cart);
   const cartKeys = Object.keys(cart || {});
   return (
     <>
