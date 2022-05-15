@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
+import withContext from '../withContext';
 
 const ProductDetail = (props) => {
-
-  const product = props.handleSelctedProduct;
-  console.log(product)
+  const product = props.context.selectedProduct;
   return (
     <div>
       <figure className="image is-64x64">
@@ -11,12 +10,9 @@ const ProductDetail = (props) => {
       </figure>
       <div>{product.price}</div>
       <div>{product.description}</div>
-      <div>{product.detail}</div>
-
-
+      <div>{product.details}</div>
     </div>
-  )
+  );
+};
 
-}
-
-export default ProductDetail;
+export default withContext(ProductDetail);
