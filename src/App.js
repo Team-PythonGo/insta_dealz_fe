@@ -11,7 +11,6 @@ import ProductList from './components/ProductList';
 import Context from './Context';
 import Search from './components/Search';
 
-
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -19,8 +18,11 @@ export default class App extends Component {
       user: null,
       cart: {},
       products: [],
+      productsCopy: [],
+      search: '',
     };
     this.routerRef = React.createRef();
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -33,8 +35,12 @@ export default class App extends Component {
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
 
-    console.log(products.data);
-    this.setState({ user, products: products.data, cart });
+    this.setState({
+      user,
+      products: products.data,
+      cart,
+      productsCopy: products.data,
+    });
   }
 
   login = async (email, password) => {
@@ -99,21 +105,15 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
-
-  handleChange = e => {
-    if (e.target.value === this.product.name) {
-      this.setState({
-        product: this.props.name
-      })
-    } else {
-      let filteredData = this.product.name.filter((horns) => horns.name === e.target.value)
-      this.setState({
-        products: filteredData
-      })
-    }
-  }
-
-
+  filterProducts = () => {
+    const filtered = this.state.productsCopy.filter((product) =>
+      product.name.includes(this.state.search)
+    );
+    this.setState({ products: filtered });
+  };
+  handleChange = (e) => {
+    this.setState({ search: e.target.value }, this.filterProducts);
+  };
 
   checkout = () => {
     if (!this.state.user) {
@@ -175,8 +175,9 @@ export default class App extends Component {
                 </label>
               </div>
               <div
-                className={`navbar-menu ${this.state.showMenu ? 'is-active' : ''
-                  }`}
+                className={`navbar-menu ${
+                  this.state.showMenu ? 'is-active' : ''
+                }`}
               >
                 <Link to="/products" className="navbar-item">
                   Products
@@ -205,7 +206,10 @@ export default class App extends Component {
                   </Link>
                 )}
               </div>
-              <Search onChange={(value) => (this.handleChange(value))} />
+              <Search
+                handleChange={this.handleChange}
+                search={this.state.search}
+              />
             </nav>
             <Switch>
               <Route exact path="/" component={ProductList} />

@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
-import { Card, Input } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react';
 
-
-
-
-const SearchComponent = props => {
-  console.log('this is props within search', props);
+const SearchComponent = (props) => {
   return (
     <div>
-      <Input type='text' placeholder='Search...' onChange={event => props.onChange(event.target.value)} />
+      <Input
+        type="text"
+        placeholder="Search..."
+        onChange={props.handleChange}
+        value={props.search}
+      />
     </div>
-  )
-
-}
-
+  );
+};
 
 export default SearchComponent;
