@@ -11,6 +11,7 @@ import ProductList from './components/ProductList';
 import Context from './Context';
 import Search from './components/Search';
 
+
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -98,7 +99,19 @@ export default class App extends Component {
     this.setState({ cart });
   };
 
-  handleChange = (e, products) => { this.setState({ products }) };
+
+  handleChange = e => {
+    if (e.target.value === this.product.name) {
+      this.setState({
+        product: this.props.name
+      })
+    } else {
+      let filteredData = this.product.name.filter((horns) => horns.name === e.target.value)
+      this.setState({
+        products: filteredData
+      })
+    }
+  }
 
 
 
