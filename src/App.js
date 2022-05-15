@@ -7,12 +7,12 @@ import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import ProductList from './components/ProductList';
-import ProductDetail from './components/productDetail';
+import ProductDetail from './components/ProductDetail';
 
 import Context from './Context';
 
 export default class App extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       user: null,
@@ -165,9 +165,8 @@ export default class App extends Component {
                 </label>
               </div>
               <div
-                className={`navbar-menu ${
-                  this.state.showMenu ? 'is-active' : ''
-                }`}
+                className={`navbar-menu ${this.state.showMenu ? 'is-active' : ''
+                  }`}
               >
                 <Link to="/products" className="navbar-item">
                   Products
@@ -195,7 +194,7 @@ export default class App extends Component {
                     Logout
                   </Link>
                 )}
-                <Link to="/products-detail">Products Detail</Link>
+
               </div>
             </nav>
             <Switch>
