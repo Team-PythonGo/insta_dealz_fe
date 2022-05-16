@@ -121,7 +121,6 @@ export default class App extends Component {
     this.clearCart();
   };
 
-
   render() {
     return (
       <Context.Provider
@@ -132,7 +131,7 @@ export default class App extends Component {
           login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
-          checkout: this.checkout,
+          checkoutCart: this.checkoutCart,
           CheckoutItems:this.CheckoutItems,
         }}
       >
@@ -171,7 +170,7 @@ export default class App extends Component {
                 }`}
               >
                 <Link to="/products" className="navbar-item">
-                  Products
+                  Home
                 </Link>
                 {this.state.user && this.state.user.accessLevel < 1 && (
                   <Link to="/add-product" className="navbar-item">

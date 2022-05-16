@@ -8,6 +8,9 @@ const CheckoutItems = (props) => {
 
   let totalCartPrice = 0;
 
+  const handleClick = () => {
+      alert('Your Order has been Processed!')
+      }
 
 
   return (
@@ -27,6 +30,7 @@ const CheckoutItems = (props) => {
       <div className="card-header">
       <h6 className="title"> Shipping Information</h6>
       </div>
+
       <div className="card-body d-flex flex-wrap">
         <div className="row">
           <div className="col-md-6">
@@ -193,12 +197,12 @@ const CheckoutItems = (props) => {
           <div className="col-md-12">
             <div className="form-group text-end">
             <br />
-              <button type="button" className="btn btn-primary">
+              <button onClick={handleClick} type="submit" className="btn btn-primary">
                 Payment
               </button>
             </div>
           </div>
-
+          
 
         </div>
       </div>
