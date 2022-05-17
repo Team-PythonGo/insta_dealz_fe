@@ -1,6 +1,8 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import withContext from '../withContext';
+import '../CSS/ProductItem.css';
+import { Figure } from 'react-bootstrap';
 
 const ProductItem = (props) => {
   const { product } = props;
@@ -11,22 +13,22 @@ const ProductItem = (props) => {
     props.context.handleSelectedProduct(product);
   }
   return (
-    <div className=" column is-half">
+    <div className=" column is-half is-size-5">
       <div className="box">
-        <div className="media">
-          <div className="media-left">
-            <figure
-              className="image is-64x64"
+        <div className="media" >
+          <div className="media-left" >
+            <Figure
+              className="image"
               onClick={() => {
                 handlePath();
               }}
             >
-              <img src={product.image} alt={product.name} />
-            </figure>
+              <img src={product.image} alt={product.name}  />
+            </Figure>
           </div>
           <div className="media-content">
             <b style={{ textTransform: 'capitalize' }}>
-              {product.name}{' '}
+              {product.name}{' '}&nbsp;
               <span className="tag is-primary">${product.price}</span>
             </b>
             <div>{product.description}</div>

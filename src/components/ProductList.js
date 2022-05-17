@@ -57,7 +57,7 @@ const ProductList = props => {
 </div>
 
       <div className="container">
-        <div className="column columns is-multiline is-size-4">
+        <div className="column columns is-multiline is-size-4 has-text-justified">
           {products && products.length ? (
             products.map((product, index) => (
               <ProductItem
