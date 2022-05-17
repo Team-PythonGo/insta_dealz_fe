@@ -30,13 +30,14 @@ class App extends Component {
 
     try {
       const token = await getAccessTokenSilently();
+      console.log(token);
       const products = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/products/`
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // }
+        `${process.env.REACT_APP_BACKEND_URL}/products/`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       user = user ? JSON.parse(user) : null;
       cart = cart ? JSON.parse(cart) : {};
