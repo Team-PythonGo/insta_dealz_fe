@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-import CheckoutItems from "./components/Checkout";
+import CheckoutItems from './components/Checkout';
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Context from "./Context";
-import logo from "./images/logo.png";
-import AboutUs from "./components/AboutUs";
+import Context from './Context';
+import logo from './images/logo.png';
+import AboutUs from './components/AboutUs';
 import { Figure } from 'react-bootstrap';
 
 export default class App extends Component {
@@ -20,6 +21,7 @@ export default class App extends Component {
       user: null,
       cart: {},
       products: [],
+      selectedProduct: {},
     };
     this.routerRef = React.createRef();
   }
@@ -34,7 +36,6 @@ export default class App extends Component {
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
 
-    console.log(products.data);
     this.setState({ user, products: products.data, cart });
   }
 
@@ -120,6 +121,12 @@ export default class App extends Component {
     this.setState({ products });
     this.clearCart();
   };
+  handleSelectedProduct = (selectedProduct) => {
+    console.log(selectedProduct);
+    this.setState({
+      selectedProduct,
+    });
+  };
 
   render() {
     return (
@@ -131,8 +138,10 @@ export default class App extends Component {
           login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
+          checkout: this.checkout,
+          handleSelectedProduct: this.handleSelectedProduct,
           checkoutCart: this.checkoutCart,
-          CheckoutItems:this.CheckoutItems,
+          CheckoutItems: this.CheckoutItems,
         }}
       >
         <Router ref={this.routerRef}>
@@ -142,11 +151,15 @@ export default class App extends Component {
               role="navigation"
               aria-label="main navigation"
             >
-              <div className="navbar-brand"><Link to="/products"><Figure.Image width={200}
-        height={200}
-        src={logo}
-        alt="brandonImage"
-      /></Link>
+              <div className="navbar-brand">
+                <Link to="/products">
+                  <Figure.Image
+                    width={200}
+                    height={200}
+                    src={logo}
+                    alt="brandonImage"
+                  />
+                </Link>
                 <b className="navbar-item is-size-4 "></b>
                 <label
                   role="button"
@@ -188,12 +201,9 @@ export default class App extends Component {
                 </Link>
                 <Link to="/checkout" className="navbar-item">
                   Checkout
-                  <span
-                    style={{ marginLeft: "5px" }}
-                  >
-                  </span>
+                  <span style={{ marginLeft: '5px' }}></span>
                 </Link>
-                <Link to="/aboutus" className='navbar-item'>
+                <Link to="/aboutus" className="navbar-item">
                   About the Team
                 </Link>
                 {!this.state.user ? (
@@ -216,6 +226,7 @@ export default class App extends Component {
               {/* cant  pass state via component */}
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
+              <Route exact path="/products/:id" component={ProductDetail} />
             </Switch>
           </div>
         </Router>

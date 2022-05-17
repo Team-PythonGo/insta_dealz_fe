@@ -1,13 +1,26 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
+import withContext from '../withContext';
 
 const ProductItem = (props) => {
   const { product } = props;
+  const history = useHistory();
+
+  function handlePath() {
+    history.push(`/products/${product.id}`);
+    props.context.handleSelectedProduct(product);
+  }
   return (
     <div className=" column is-half">
       <div className="box">
         <div className="media">
           <div className="media-left">
-            <figure className="image is-64x64">
+            <figure
+              className="image is-64x64"
+              onClick={() => {
+                handlePath();
+              }}
+            >
               <img src={product.image} alt={product.name} />
             </figure>
           </div>
@@ -43,4 +56,4 @@ const ProductItem = (props) => {
   );
 };
 
-export default ProductItem;
+export default withContext(ProductItem);
