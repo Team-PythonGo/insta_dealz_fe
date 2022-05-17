@@ -1,7 +1,7 @@
 import React from 'react';
 import brandon from '../images/brandon.png'
 import Figure from 'react-bootstrap/Figure';
-
+import headerTeam from '../images/header-team.png';
 
 
 class AboutUs extends React.Component {
@@ -10,11 +10,11 @@ class AboutUs extends React.Component {
   render() {
     return(
       <>
-      <div className="hero is-primary">
-        <div className="hero-body container">
-          <h4 className="title is-size-1">About the Team!</h4>
-        </div>
-      </div>
+      <Figure.Image width="100%"
+        max-height="50%"
+        src={headerTeam}
+        alt="product-header"
+      />
 
       <br></br>
       <div className='columns is-fluid is-size-4'>
@@ -118,20 +118,20 @@ class AboutUs extends React.Component {
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-          <Figure.Image width={184}
-        height={150}
+          <Figure.Image width={300}
+        height={250}
         src={brandon}
         alt="brandonImage"
       />
 
       </div>
       <div class="media-content">
-        <p class="title is-4">Brandon Mizutani</p>
-        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/brandon-mizutani-273757213/">https://www.linkedin.com/in/brandon-mizutani-273757213/</a></p>
+        <p class="title is-3">Brandon Mizutani</p>
+        <p class="subtitle is-5"><a href="https://www.linkedin.com/in/brandon-mizutani-273757213/">https://www.linkedin.com/in/brandon-mizutani-273757213/</a></p>
       </div>
     </div>
 
-    <div class="content">
+    <div class="content has-text-justified">
     <p>I am a student at Code Fellows. I recently moved from Los Angeles to Seattle, Washington. I went to school for and worked in T.V. post-production. I decided to change my career after having time to reflect what would challenge and motivate me. I had prior experience in HTML & CSS. While I did learn a few JavaScript functions in college, it has only been through Code Fellows that I have gained a greater understanding of it and so much more. Upon completing Code Fellows, I hope to attain a career as a software developer, working with like-minded individuals who have the same passion for coding.</p>
       <br></br>
     </div>

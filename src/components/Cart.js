@@ -16,7 +16,7 @@ const Cart = props => {
   return (
     <>
       <Figure.Image width="100%"
-        max-height="30%"
+        max-height="50%"
         src={headerCart}
         alt="product-header"
       />

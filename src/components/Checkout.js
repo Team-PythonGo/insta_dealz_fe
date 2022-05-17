@@ -5,6 +5,7 @@ import { Figure } from "react-bootstrap";
 import ad from '../images/ad-1.png';
 import adTwo from '../images/ad-2.png';
 import adThree from '../images/ad-3.png';
+import headerCheckout from '../images/header-checkout.png';
 
 
 const CheckoutItems = (props) => {
@@ -21,12 +22,11 @@ const CheckoutItems = (props) => {
 
   return (
     <>
-    <div className="hero is-primary">
-      <div className="hero-body container">
-        
-        <h4 className="title is-size-1">Checkout</h4>
-      </div>
-    </div>
+    <Figure.Image width="100%"
+        max-height="50%"
+        src={headerCheckout}
+        alt="product-header"
+      />
     <div className="columns is-centered">
     <div className="column ">
     <Carousel>
