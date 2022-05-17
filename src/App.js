@@ -10,6 +10,7 @@ import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Context from './Context';
+import Search from './components/Search';
 import logo from './images/logo.png';
 import AboutUs from './components/AboutUs';
 import { Figure } from 'react-bootstrap';
@@ -21,9 +22,12 @@ export default class App extends Component {
       user: null,
       cart: {},
       products: [],
+      productsCopy: [],
+      search: '',
       selectedProduct: {},
     };
     this.routerRef = React.createRef();
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -36,7 +40,12 @@ export default class App extends Component {
     user = user ? JSON.parse(user) : null;
     cart = cart ? JSON.parse(cart) : {};
 
-    this.setState({ user, products: products.data, cart });
+    this.setState({
+      user,
+      products: products.data,
+      cart,
+      productsCopy: products.data,
+    });
   }
 
   login = async (email, password) => {
@@ -99,6 +108,16 @@ export default class App extends Component {
     let cart = {};
     localStorage.removeItem('cart');
     this.setState({ cart });
+  };
+
+  filterProducts = () => {
+    const filtered = this.state.productsCopy.filter((product) =>
+      product.name.includes(this.state.search)
+    );
+    this.setState({ products: filtered });
+  };
+  handleChange = (e) => {
+    this.setState({ search: e.target.value }, this.filterProducts);
   };
 
   checkout = () => {
@@ -216,6 +235,10 @@ export default class App extends Component {
                   </Link>
                 )}
               </div>
+              <Search
+                handleChange={this.handleChange}
+                search={this.state.search}
+              />
             </nav>
             <Switch>
               <Route exact path="/" component={ProductList} />

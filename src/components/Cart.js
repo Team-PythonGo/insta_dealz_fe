@@ -4,7 +4,9 @@ import CartItem from "./CartItem";
 import {Link } from "react-router-dom";
 
 const Cart = props => {
+  console.log('this is props context', props.context);
   const { cart } = props.context;
+  console.log('cart', cart);
   const cartKeys = Object.keys(cart || {});
   return (
     <>
