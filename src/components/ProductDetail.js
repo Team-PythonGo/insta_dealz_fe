@@ -6,7 +6,7 @@ const ProductDetail = (props) => {
     <div className='detail'>
       <div className=" column is-half">
         <div className="box">
-          <div className="media">
+          <div className="media ">
             <div className="media-left">
               <figure
                 className="image is-500x500"

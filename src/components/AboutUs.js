@@ -12,12 +12,12 @@ class AboutUs extends React.Component {
       <>
       <div className="hero is-primary">
         <div className="hero-body container">
-          <h4 className="title">About the Team!</h4>
+          <h4 className="title is-size-1">About the Team!</h4>
         </div>
       </div>
 
       <br></br>
-      <div className='columns is-fluid'>
+      <div className='columns is-fluid is-size-4'>
         <div className='column is-half'>
       <div class="card is-half ml-2">
   <div class="card-image">
