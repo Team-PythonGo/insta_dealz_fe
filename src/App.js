@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-
+import CheckoutItems from './components/Checkout';
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Logout from './components/Logout';
 import ProductList from './components/ProductList';
 import { withAuth0 } from '@auth0/auth0-react';
-
+import ProductDetail from './components/ProductDetail';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Context from './Context';
+import Search from './components/Search';
+import logo from './images/logo.png';
+import AboutUs from './components/AboutUs';
+import { Figure } from 'react-bootstrap';
 
 class App extends Component {
   constructor(props) {
@@ -19,8 +24,12 @@ class App extends Component {
       user: null,
       cart: {},
       products: [],
+      productsCopy: [],
+      search: '',
+      selectedProduct: {},
     };
     this.routerRef = React.createRef();
+    this.handleChange = this.handleChange.bind(this);
   }
 
   async componentDidMount() {
@@ -42,7 +51,12 @@ class App extends Component {
       user = user ? JSON.parse(user) : null;
       cart = cart ? JSON.parse(cart) : {};
 
-      this.setState({ user, products: products.data, cart });
+      this.setState({
+        user,
+        products: products.data,
+        cart,
+        productsCopy: products.data,
+      });
     } catch (error) {
       console.log(error);
     }
@@ -110,6 +124,16 @@ class App extends Component {
     this.setState({ cart });
   };
 
+  filterProducts = () => {
+    const filtered = this.state.productsCopy.filter((product) =>
+      product.name.includes(this.state.search)
+    );
+    this.setState({ products: filtered });
+  };
+  handleChange = (e) => {
+    this.setState({ search: e.target.value }, this.filterProducts);
+  };
+
   checkout = () => {
     if (!this.state.user) {
       this.routerRef.current.history.push('/login');
@@ -122,13 +146,19 @@ class App extends Component {
       if (cart[p.name]) {
         p.stock = p.stock - cart[p.name].amount;
 
-        axios.put(`http://localhost:3001/products/${p.id}`, { ...p });
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/${p.id}`, { ...p });
       }
       return p;
     });
 
     this.setState({ products });
     this.clearCart();
+  };
+  handleSelectedProduct = (selectedProduct) => {
+    console.log(selectedProduct);
+    this.setState({
+      selectedProduct,
+    });
   };
 
   render() {
@@ -143,6 +173,9 @@ class App extends Component {
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
+          handleSelectedProduct: this.handleSelectedProduct,
+          checkoutCart: this.checkoutCart,
+          CheckoutItems: this.CheckoutItems,
         }}
       >
         <Router ref={this.routerRef}>
@@ -153,7 +186,15 @@ class App extends Component {
               aria-label="main navigation"
             >
               <div className="navbar-brand">
-                <b className="navbar-item is-size-4 ">ecommerce</b>
+                <Link to="/products">
+                  <Figure.Image
+                    width={200}
+                    height={200}
+                    src={logo}
+                    alt="brandonImage"
+                  />
+                </Link>
+                <b className="navbar-item is-size-4 "></b>
                 <label
                   role="button"
                   className="navbar-burger burger"
@@ -176,7 +217,7 @@ class App extends Component {
                 }`}
               >
                 <Link to="/products" className="navbar-item">
-                  Products
+                  Home
                 </Link>
                 {this.state.user && this.state.user.accessLevel < 1 && (
                   <Link to="/add-product" className="navbar-item">
@@ -210,13 +251,21 @@ class App extends Component {
                   </Link>
                 )} */}
               </div>
+              <Search
+                handleChange={this.handleChange}
+                search={this.state.search}
+              />
             </nav>
             <Switch>
               <Route exact path="/" component={ProductList} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/cart" component={Cart} />
+              <Route exact path="/checkout" component={CheckoutItems} />
+              <Route exact path="/aboutus" component={AboutUs} />
+              {/* cant  pass state via component */}
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
+              <Route exact path="/products/:id" component={ProductDetail} />
             </Switch>
           </div>
         </Router>
