@@ -2,13 +2,16 @@ import React, { Component } from 'react';
 import { Switch, Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
-
+import CheckoutItems from "./components/Checkout";
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import ProductList from './components/ProductList';
-
-import Context from './Context';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Context from "./Context";
+import logo from "./images/logo.png";
+import AboutUs from "./components/AboutUs";
+import { Figure } from 'react-bootstrap';
 
 export default class App extends Component {
   constructor(props) {
@@ -109,7 +112,7 @@ export default class App extends Component {
       if (cart[p.name]) {
         p.stock = p.stock - cart[p.name].amount;
 
-        axios.put(`http://localhost:3001/products/${p.id}`, { ...p });
+        axios.put(`${process.env.REACT_APP_BACKEND_URL}/${p.id}`, { ...p });
       }
       return p;
     });
@@ -128,7 +131,8 @@ export default class App extends Component {
           login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
-          checkout: this.checkout,
+          checkoutCart: this.checkoutCart,
+          CheckoutItems:this.CheckoutItems,
         }}
       >
         <Router ref={this.routerRef}>
@@ -138,8 +142,12 @@ export default class App extends Component {
               role="navigation"
               aria-label="main navigation"
             >
-              <div className="navbar-brand">
-                <b className="navbar-item is-size-4 ">ecommerce</b>
+              <div className="navbar-brand"><Link to="/products"><Figure.Image width={200}
+        height={200}
+        src={logo}
+        alt="brandonImage"
+      /></Link>
+                <b className="navbar-item is-size-4 "></b>
                 <label
                   role="button"
                   className="navbar-burger burger"
@@ -162,7 +170,7 @@ export default class App extends Component {
                 }`}
               >
                 <Link to="/products" className="navbar-item">
-                  Products
+                  Home
                 </Link>
                 {this.state.user && this.state.user.accessLevel < 1 && (
                   <Link to="/add-product" className="navbar-item">
@@ -177,6 +185,16 @@ export default class App extends Component {
                   >
                     {Object.keys(this.state.cart).length}
                   </span>
+                </Link>
+                <Link to="/checkout" className="navbar-item">
+                  Checkout
+                  <span
+                    style={{ marginLeft: "5px" }}
+                  >
+                  </span>
+                </Link>
+                <Link to="/aboutus" className='navbar-item'>
+                  About the Team
                 </Link>
                 {!this.state.user ? (
                   <Link to="/login" className="navbar-item">
@@ -193,6 +211,9 @@ export default class App extends Component {
               <Route exact path="/" component={ProductList} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/cart" component={Cart} />
+              <Route exact path="/checkout" component={CheckoutItems} />
+              <Route exact path="/aboutus" component={AboutUs} />
+              {/* cant  pass state via component */}
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
             </Switch>
