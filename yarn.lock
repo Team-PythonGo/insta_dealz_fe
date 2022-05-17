@@ -2941,6 +2941,11 @@
   "resolved" "https://registry.npmjs.org/builtin-modules/-/builtin-modules-3.3.0.tgz"
   "version" "3.3.0"
 
+"bulma-carousel@^4.0.24":
+  "integrity" "sha512-DLYKmf/iHH8yAQSo8+O/cQvSVSAo15f+XmbiQvAvu5hUJs5O8I40RbZqrF9OougNs4n4JMokPEIBUiDGAsFuRA=="
+  "resolved" "https://registry.npmjs.org/bulma-carousel/-/bulma-carousel-4.0.24.tgz"
+  "version" "4.0.24"
+
 "bulma-steps-component@^0.5.3":
   "integrity" "sha512-r8SldfFvKm7/Dk9K2P4319fQDyDckHYVpbf2V6CjMJVxG2kFhobvTtqsPOfr+kLfURtPmijzMcHszwBw5FRGow=="
   "resolved" "https://registry.npmjs.org/bulma-steps-component/-/bulma-steps-component-0.5.3.tgz"

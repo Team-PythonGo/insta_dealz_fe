@@ -1,5 +1,11 @@
 
 import withContext from "../withContext";
+import { Carousel } from "react-bootstrap";
+import { Figure } from "react-bootstrap";
+import ad from '../images/ad-1.png';
+import adTwo from '../images/ad-2.png';
+import adThree from '../images/ad-3.png'
+
 
 const CheckoutItems = (props) => {
 
@@ -21,7 +27,42 @@ const CheckoutItems = (props) => {
         <h4 className="title">Checkout</h4>
       </div>
     </div>
-    <br />
+    <div className="columns is-centered">
+    <div className="column ">
+    <Carousel>
+  <Carousel.Item>
+  <Figure.Image width={1300}
+        height={200}
+        src={ad}
+        alt="games-sale"
+      />
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+    <Figure.Image width={1300}
+        height={200}
+        src={adTwo}
+        alt="produce-sale"
+      />
+
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+  <Carousel.Item>
+  <Figure.Image width={1300}
+        height={200}
+        src={adThree}
+        alt="brandonImage"
+      />
+
+    <Carousel.Caption>
+    </Carousel.Caption>
+  </Carousel.Item>
+</Carousel>
+</div>
+</div>
+
 
 
     <div className="columns">
@@ -198,7 +239,7 @@ const CheckoutItems = (props) => {
             <div className="form-group text-end">
             <br />
               <button onClick={handleClick} type="submit" className="btn btn-primary">
-                Payment
+                Order
               </button>
             </div>
           </div>
@@ -213,14 +254,14 @@ const CheckoutItems = (props) => {
       <div className="column is-two-fifths ml-5  ">
       <div className="card ">
         <div className="card-header ">
-          <h6 className="title"> Cart </h6>
+          <h6 className="title m-auto"> Cart </h6>
         </div>
         <div className="card-body">
         <div className="col-md-12">
         <table className="table table-bordered">
           <thead>
               <tr>
-                <th width="50%">Item</th>
+                <th width="50%">Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
@@ -233,8 +274,8 @@ const CheckoutItems = (props) => {
             <tr key={idx}>
               <td>{cart[key].product.name}</td>
               <td>${cart[key].product.price}</td>
-              <td>{cart[key].amount}</td>
-              <td>${cart[key].product.price * cart[key].amount}</td>
+              <td >{cart[key].amount}</td>
+              <td className="has-text-centered">${cart[key].product.price * cart[key].amount}</td>
             </tr>
             )
           })}
@@ -250,7 +291,7 @@ const CheckoutItems = (props) => {
     </div>
 
     </div>
-
+    
     </>
   )
 }
