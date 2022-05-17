@@ -8,7 +8,7 @@ const ProductDetail = (props) => {
   const product = props.context.selectedProduct;
   return (
     <div className='detail'>
-      <div className=" column is-three-quarters ml-7">
+      <div className=" column is-three-quarters ">
         <div className="box is-size-4">
           <div className="media is-size-6 ">
             <div className="media-left">
