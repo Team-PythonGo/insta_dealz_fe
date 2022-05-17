@@ -1,6 +1,7 @@
 import React from "react";
 import withContext from "../withContext";
 import CartItem from "./CartItem";
+import {Link } from "react-router-dom";
 
 const Cart = props => {
   console.log('this is props context', props.context);
@@ -35,12 +36,13 @@ const Cart = props => {
                 >
                   Clear cart
                 </button>{" "}
+                <Link to="/checkout">
                 <button
                   className="button is-success"
-                  onClick={props.context.checkout}
                 >
                   Checkout
                 </button>
+                </Link>
               </div>
             </div>
           </div>
