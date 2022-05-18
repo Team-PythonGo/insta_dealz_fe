@@ -16,6 +16,7 @@ import Search from './components/Search';
 import logo from './images/logo.png';
 import AboutUs from './components/AboutUs';
 import { Figure } from 'react-bootstrap';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -38,15 +39,14 @@ class App extends Component {
     const { getAccessTokenSilently } = this.props.auth0;
 
     try {
-      const token = await getAccessTokenSilently();
-      console.log(token);
+      // const token = await getAccessTokenSilently();
       const products = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/products/`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        `${process.env.REACT_APP_BACKEND_URL}/products/`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
       );
       user = user ? JSON.parse(user) : null;
       cart = cart ? JSON.parse(cart) : {};
@@ -126,7 +126,7 @@ class App extends Component {
 
   filterProducts = () => {
     const filtered = this.state.productsCopy.filter((product) =>
-      product.name.includes(this.state.search)
+      product.name.toLowerCase().includes(this.state.search.toLowerCase())
     );
     this.setState({ products: filtered });
   };

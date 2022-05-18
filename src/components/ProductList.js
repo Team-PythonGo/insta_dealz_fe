@@ -1,20 +1,29 @@
 import React from 'react';
 import ProductItem from './ProductItem';
 import withContext from '../withContext';
+import { Figure } from 'react-bootstrap';
+import headerProduct from '../images/header-products.png';
+import ProductsCarousel from './ProductsCarousel';
 
 const ProductList = (props) => {
   const { products } = props.context;
 
   return (
     <>
-      <div className="hero is-primary">
-        <div className="hero-body container">
-          <h4 className="title">Our Products</h4>
-        </div>
+      <div
+        className="columns is-centered"
+        style={{ width: '60%', height: '200px', margin: 'auto' }}
+      >
+        <Figure.Image
+          width="100%"
+          max-height="100px"
+          src={headerProduct}
+          alt="product-header"
+        />
       </div>
-      <br />
+      <ProductsCarousel />
       <div className="container">
-        <div className="column columns is-multiline">
+        <div className="column columns is-multiline  has-text-left">
           {products && products.length ? (
             products.map((product, index) => (
               <ProductItem
