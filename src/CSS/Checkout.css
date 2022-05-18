@@ -1,10 +1,10 @@
-.padding{
-  padding:5rem !important;
-  margin-left:300px;
+.padding {
+  padding: 5rem !important;
+  margin-left: 300px;
 }
 .card {
   margin-bottom: 1.5rem;
-} 
+}
 
 .card {
   position: relative;
@@ -17,7 +17,7 @@
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid #c8ced3;
-  border-radius: .25rem;
+  border-radius: 0.25rem;
 }
 
 .card-header:first-child {
@@ -25,7 +25,7 @@
 }
 
 .card-header {
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   margin-bottom: 0;
   background-color: #f0f3f5;
   border-bottom: 1px solid #c8ced3;
@@ -41,7 +41,7 @@
   background-color: #fff;
   border-color: #c8ced3 !important;
   outline: 0;
-  box-shadow: 0 0 0 #F44336;
+  box-shadow: 0 0 0 #f44336;
 }
 
 .carousel .item {
@@ -49,8 +49,8 @@
 }
 
 .item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-height: 300px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 300px;
 }

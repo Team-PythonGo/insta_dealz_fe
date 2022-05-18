@@ -6,7 +6,9 @@ import CheckoutItems from './components/Checkout';
 import AddProduct from './components/AddProduct';
 import Cart from './components/Cart';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import ProductList from './components/ProductList';
+import { withAuth0 } from '@auth0/auth0-react';
 import ProductDetail from './components/ProductDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Context from './Context';
@@ -16,7 +18,7 @@ import AboutUs from './components/AboutUs';
 import { Figure } from 'react-bootstrap';
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,19 +36,30 @@ export default class App extends Component {
   async componentDidMount() {
     let user = localStorage.getItem('user');
     let cart = localStorage.getItem('cart');
+    const { getAccessTokenSilently } = this.props.auth0;
 
-    const products = await axios.get(
-      `${process.env.REACT_APP_BACKEND_URL}/products/`
-    );
-    user = user ? JSON.parse(user) : null;
-    cart = cart ? JSON.parse(cart) : {};
+    try {
+      // const token = await getAccessTokenSilently();
+      const products = await axios.get(
+        `${process.env.REACT_APP_BACKEND_URL}/products/`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
+      );
+      user = user ? JSON.parse(user) : null;
+      cart = cart ? JSON.parse(cart) : {};
 
-    this.setState({
-      user,
-      products: products.data,
-      cart,
-      productsCopy: products.data,
-    });
+      this.setState({
+        user,
+        products: products.data,
+        cart,
+        productsCopy: products.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   login = async (email, password) => {
@@ -113,7 +126,7 @@ export default class App extends Component {
 
   filterProducts = () => {
     const filtered = this.state.productsCopy.filter((product) =>
-      product.name.includes(this.state.search)
+      product.name.toLowerCase().includes(this.state.search.toLowerCase())
     );
     this.setState({ products: filtered });
   };
@@ -149,13 +162,13 @@ export default class App extends Component {
   };
 
   render() {
+    const { isAuthenticated, isLoading } = this.props.auth0;
     return (
       <Context.Provider
         value={{
           ...this.state,
           removeFromCart: this.removeFromCart,
           addToCart: this.addToCart,
-          login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
@@ -172,10 +185,10 @@ export default class App extends Component {
               aria-label="main navigation"
             >
               <div className="navbar-brand">
-                <Link to="/products">
+                <Link to="/">
                   <Figure.Image
-                    width={200}
-                    height={200}
+                    width={50}
+                    height={50}
                     src={logo}
                     alt="brandonImage"
                   />
@@ -202,7 +215,7 @@ export default class App extends Component {
                   this.state.showMenu ? 'is-active' : ''
                 }`}
               >
-                <Link to="/products" className="navbar-item">
+                <Link to="/" className="navbar-item">
                   Home
                 </Link>
                 {this.state.user && this.state.user.accessLevel < 1 && (
@@ -219,21 +232,12 @@ export default class App extends Component {
                     {Object.keys(this.state.cart).length}
                   </span>
                 </Link>
-                <Link to="/checkout" className="navbar-item">
-                  Checkout
-                  <span style={{ marginLeft: '5px' }}></span>
-                </Link>
-                <Link to="/aboutus" className="navbar-item">
-                  About the Team
-                </Link>
-                {!this.state.user ? (
-                  <Link to="/login" className="navbar-item">
-                    Login
-                  </Link>
+                {isLoading ? (
+                  <div>Loading ...</div>
+                ) : isAuthenticated ? (
+                  <Logout />
                 ) : (
-                  <Link to="/" onClick={this.logout} className="navbar-item">
-                    Logout
-                  </Link>
+                  <Login />
                 )}
               </div>
               <Search
@@ -247,7 +251,6 @@ export default class App extends Component {
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/checkout" component={CheckoutItems} />
               <Route exact path="/aboutus" component={AboutUs} />
-              {/* cant  pass state via component */}
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
               <Route exact path="/products/:id" component={ProductDetail} />
@@ -258,3 +261,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withAuth0(App);
