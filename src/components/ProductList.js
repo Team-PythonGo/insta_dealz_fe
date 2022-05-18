@@ -1,8 +1,8 @@
-import React from "react";
-import ProductItem from "./ProductItem";
-import withContext from "../withContext";
+import React from 'react';
+import ProductItem from './ProductItem';
+import withContext from '../withContext';
 
-const ProductList = props => {
+const ProductList = (props) => {
   const { products } = props.context;
 
   return (
@@ -26,9 +26,7 @@ const ProductList = props => {
             ))
           ) : (
             <div className="column">
-              <span className="title has-text-grey-light">
-                No products found!
-              </span>
+              <span className="title has-text-grey-light">Loading...</span>
             </div>
           )}
         </div>

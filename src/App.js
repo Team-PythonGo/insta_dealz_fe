@@ -169,7 +169,6 @@ class App extends Component {
           ...this.state,
           removeFromCart: this.removeFromCart,
           addToCart: this.addToCart,
-          // login: this.login,
           addProduct: this.addProduct,
           clearCart: this.clearCart,
           checkout: this.checkout,
@@ -186,10 +185,10 @@ class App extends Component {
               aria-label="main navigation"
             >
               <div className="navbar-brand">
-                <Link to="/products">
+                <Link to="/">
                   <Figure.Image
-                    width={200}
-                    height={200}
+                    width={50}
+                    height={50}
                     src={logo}
                     alt="brandonImage"
                   />
@@ -216,7 +215,7 @@ class App extends Component {
                   this.state.showMenu ? 'is-active' : ''
                 }`}
               >
-                <Link to="/products" className="navbar-item">
+                <Link to="/" className="navbar-item">
                   Home
                 </Link>
                 {this.state.user && this.state.user.accessLevel < 1 && (
@@ -240,16 +239,6 @@ class App extends Component {
                 ) : (
                   <Login />
                 )}
-
-                {/* {!this.state.user ? (
-                  <Link to="/login" className="navbar-item">
-                    Login
-                  </Link>
-                ) : (
-                  <Link to="/" onClick={this.logout} className="navbar-item">
-                    Logout
-                  </Link>
-                )} */}
               </div>
               <Search
                 handleChange={this.handleChange}
@@ -262,7 +251,6 @@ class App extends Component {
               <Route exact path="/cart" component={Cart} />
               <Route exact path="/checkout" component={CheckoutItems} />
               <Route exact path="/aboutus" component={AboutUs} />
-              {/* cant  pass state via component */}
               <Route exact path="/add-product" component={AddProduct} />
               <Route exact path="/products" component={ProductList} />
               <Route exact path="/products/:id" component={ProductDetail} />
