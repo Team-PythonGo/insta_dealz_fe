@@ -171,15 +171,16 @@ export default class App extends Component {
               role="navigation"
               aria-label="main navigation"
             >
-              <div className="navbar-brand">
-                <Link to="/products">
+            <Link to="/products">
                   <Figure.Image
-                    width={200}
-                    height={200}
+                    width={300}
+                    height={300}
                     src={logo}
-                    alt="brandonImage"
+                    alt="logo"
                   />
                 </Link>
+              <div className="navbar-brand">
+                
                 <b className="navbar-item is-size-4 "></b>
                 <label
                   role="button"
@@ -202,15 +203,15 @@ export default class App extends Component {
                   this.state.showMenu ? 'is-active' : ''
                 }`}
               >
-                <Link to="/products" className="navbar-item">
+                <Link to="/products" className="navbar-item is-size-4">
                   Home
                 </Link>
                 {this.state.user && this.state.user.accessLevel < 1 && (
-                  <Link to="/add-product" className="navbar-item">
+                  <Link to="/add-product" className="navbar-item is-size-4">
                     Add Product
                   </Link>
                 )}
-                <Link to="/cart" className="navbar-item">
+                <Link to="/cart" className="navbar-item is-size-4">
                   Cart
                   <span
                     className="tag is-primary"
@@ -219,19 +220,19 @@ export default class App extends Component {
                     {Object.keys(this.state.cart).length}
                   </span>
                 </Link>
-                <Link to="/checkout" className="navbar-item">
+                <Link to="/checkout" className="navbar-item is-size-4">
                   Checkout
                   <span style={{ marginLeft: '5px' }}></span>
                 </Link>
-                <Link to="/aboutus" className="navbar-item">
+                <Link to="/aboutus" className="navbar-item is-size-4">
                   About the Team
                 </Link>
                 {!this.state.user ? (
-                  <Link to="/login" className="navbar-item">
+                  <Link to="/login" className="navbar-item is-size-4">
                     Login
                   </Link>
                 ) : (
-                  <Link to="/" onClick={this.logout} className="navbar-item">
+                  <Link to="/" onClick={this.logout} className="navbar-item is-size-4">
                     Logout
                   </Link>
                 )}

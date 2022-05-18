@@ -10,13 +10,17 @@ class AboutUs extends React.Component {
   render() {
     return(
       <>
-      <Figure.Image width="100%"
+      <div className="columns is-centered">
+      <Figure.Image width="1300px"
         max-height="50%"
         src={headerTeam}
         alt="product-header"
       />
+      </div>
+      
 
       <br></br>
+      <div className='container'>
       <div className='columns is-fluid is-size-4'>
         <div className='column is-half'>
       <div class="card is-half ml-2">
@@ -145,6 +149,7 @@ class AboutUs extends React.Component {
 
 
 
+</div>
 </div>
       </>
 

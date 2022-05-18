@@ -2,7 +2,7 @@ import { Input } from 'semantic-ui-react';
 
 const SearchComponent = (props) => {
   return (
-    <div>
+    <div className='mt-6 mr-3'>
       <Input
         type="text"
         placeholder="Search..."

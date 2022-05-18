@@ -13,18 +13,19 @@ const ProductList = props => {
 
   return (
     <>
-      
-        <Figure.Image width="100%"
+      <div className="columns is-centered">
+        <Figure.Image width="1300px"
         max-height="30%"
         src={headerProduct}
         alt="product-header"
       />
+      </div>
       
       <div className="columns is-centered">
-    <div className="column ">
+
     <Carousel>
   <Carousel.Item>
-  <Figure.Image width="100%"
+  <Figure.Image width="1300px"
         height={200}
         src={ad}
         alt="games-sale"
@@ -33,7 +34,7 @@ const ProductList = props => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-    <Figure.Image width="100%"
+    <Figure.Image width="1300px"
         height={200}
         src={adTwo}
         alt="produce-sale"
@@ -43,7 +44,7 @@ const ProductList = props => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-  <Figure.Image width="100%"
+  <Figure.Image width="1300px"
         height={200}
         src={adThree}
         alt="brandonImage"
@@ -54,10 +55,10 @@ const ProductList = props => {
   </Carousel.Item>
 </Carousel>
 </div>
-</div>
 
-      <div className="container">
-        <div className="column columns is-multiline  has-text-left">
+
+      <div className="container ">
+        <div className="column columns is-multiline is=half has-text-left">
           {products && products.length ? (
             products.map((product, index) => (
               <ProductItem

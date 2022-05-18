@@ -17,17 +17,18 @@ const Cart = props => {
 
   return (
     <>
-      <Figure.Image width="100%"
+     <div className="columns is-centered">
+      <Figure.Image width="1300px"
         max-height="50%"
         src={headerCart}
         alt="product-header"
       />
-
+      </div>
+      
       <div className="columns is-centered">
-    <div className="column ">
     <Carousel>
   <Carousel.Item>
-  <Figure.Image width="100%"
+  <Figure.Image width="1300px"
         height={200}
         src={ad}
         alt="games-sale"
@@ -36,7 +37,7 @@ const Cart = props => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-    <Figure.Image width="100%"
+    <Figure.Image width="1300px"
         height={200}
         src={adTwo}
         alt="produce-sale"
@@ -46,7 +47,7 @@ const Cart = props => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-  <Figure.Image width="100%"
+  <Figure.Image width="1300px"
         height={200}
         src={adThree}
         alt="brandonImage"
@@ -57,7 +58,7 @@ const Cart = props => {
   </Carousel.Item>
 </Carousel>
 </div>
-</div>
+
 
       <div className="container">
         {cartKeys.length ? (

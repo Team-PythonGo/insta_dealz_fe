@@ -22,16 +22,19 @@ const CheckoutItems = (props) => {
 
   return (
     <>
-    <Figure.Image width="100%"
+    <div className="columns is-centered">
+    <Figure.Image width="1300px"
         max-height="50%"
         src={headerCheckout}
         alt="product-header"
       />
+    </div>
+
     <div className="columns is-centered">
-    <div className="column ">
+    
     <Carousel>
   <Carousel.Item>
-  <Figure.Image width="100%"
+  <Figure.Image width="1300px"
         height={200}
         src={ad}
         alt="games-sale"
@@ -40,7 +43,7 @@ const CheckoutItems = (props) => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-    <Figure.Image width="100%"
+    <Figure.Image width="1300px"
         height={200}
         src={adTwo}
         alt="produce-sale"
@@ -50,7 +53,7 @@ const CheckoutItems = (props) => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-  <Figure.Image width="100%"
+  <Figure.Image width="1300px"
         height={200}
         src={adThree}
         alt="brandonImage"
@@ -61,13 +64,13 @@ const CheckoutItems = (props) => {
   </Carousel.Item>
 </Carousel>
 </div>
-</div>
 
 
 
-    <div className="columns is-size-4">
-    <div className="column is-half ml-2 ">
-    <div className="card ml-6">
+    <div className="container">
+    <div className="columns">
+    <div className="column is-half  ">
+    <div className="card ml-3">
       <div className="card-header">
       <h6 className="title"> Shipping Information</h6>
       </div>
@@ -257,8 +260,8 @@ const CheckoutItems = (props) => {
       </div>
 
     
-      <div className="column is-two-fifths  ">
-      <div className="card ml-6">
+      <div className="column is-half  ">
+      <div className="card ml-2 mr-3">
         <div className="card-header ">
           <h6 className="title m-auto"> Cart </h6>
         </div>
@@ -297,7 +300,7 @@ const CheckoutItems = (props) => {
     </div>
 
     </div>
-    
+    </div>
     </>
   )
 }

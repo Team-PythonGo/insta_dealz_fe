@@ -35,6 +35,8 @@
   }
 }
 
-.image {
-  width:"40%";
+
+div.carousel.slide {
+  width:1300px;
+
 }
