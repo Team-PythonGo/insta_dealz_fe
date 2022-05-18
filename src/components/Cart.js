@@ -7,12 +7,14 @@ import { Figure } from "react-bootstrap";
 import ad from '../images/ad-1.png';
 import adTwo from '../images/ad-2.png';
 import adThree from '../images/ad-3.png';
-import headerCart from '../images/header-cart.png'
+import headerCart from '../images/header-cart.png';
 
 
 const Cart = props => {
   const { cart } = props.context;
   const cartKeys = Object.keys(cart || {});
+
+
   return (
     <>
       <Figure.Image width="100%"
