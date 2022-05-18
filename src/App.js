@@ -14,6 +14,7 @@ import Search from './components/Search';
 import logo from './images/logo.png';
 import AboutUs from './components/AboutUs';
 import { Figure } from 'react-bootstrap';
+import './App.css';
 
 export default class App extends Component {
   constructor(props) {

@@ -4,7 +4,8 @@ import { Carousel } from "react-bootstrap";
 import { Figure } from "react-bootstrap";
 import ad from '../images/ad-1.png';
 import adTwo from '../images/ad-2.png';
-import adThree from '../images/ad-3.png'
+import adThree from '../images/ad-3.png';
+import headerCheckout from '../images/header-checkout.png';
 
 
 const CheckoutItems = (props) => {
@@ -21,17 +22,16 @@ const CheckoutItems = (props) => {
 
   return (
     <>
-    <div className="hero is-primary">
-      <div className="hero-body container">
-        
-        <h4 className="title">Checkout</h4>
-      </div>
-    </div>
+    <Figure.Image width="100%"
+        max-height="50%"
+        src={headerCheckout}
+        alt="product-header"
+      />
     <div className="columns is-centered">
     <div className="column ">
     <Carousel>
   <Carousel.Item>
-  <Figure.Image width={1300}
+  <Figure.Image width="100%"
         height={200}
         src={ad}
         alt="games-sale"
@@ -40,7 +40,7 @@ const CheckoutItems = (props) => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-    <Figure.Image width={1300}
+    <Figure.Image width="100%"
         height={200}
         src={adTwo}
         alt="produce-sale"
@@ -50,7 +50,7 @@ const CheckoutItems = (props) => {
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>
-  <Figure.Image width={1300}
+  <Figure.Image width="100%"
         height={200}
         src={adThree}
         alt="brandonImage"
@@ -65,27 +65,28 @@ const CheckoutItems = (props) => {
 
 
 
-    <div className="columns">
+    <div className="columns is-size-4">
     <div className="column is-half ml-2 ">
-    <div className="card">
+    <div className="card ml-6">
       <div className="card-header">
       <h6 className="title"> Shipping Information</h6>
       </div>
 
-      <div className="card-body d-flex flex-wrap">
+      <div className="card-body">
         <div className="row">
           <div className="col-md-6">
-            <div className="form-group mb-3">
+            <div className="form-group mb-4">
               <label>First Name</label>
               <input type="text" name="first-name" className="form-control"></input>
             </div>
           </div>
           <div className="col-md-6">
-            <div className="form-group mb-3">
+            <div className="form-group mb-4">
               <label>Last Name</label>
               <input type="text" name="first-name" className="form-control"></input>
             </div>
           </div>
+          
         </div>
         <div className="row">
         <div className="col-md-6">
@@ -95,45 +96,50 @@ const CheckoutItems = (props) => {
             </div>
           </div>
           <div className="col-md-6">
-            <div className="form-group mb-3">
+            <div className="form-group mb-5">
               <label>Email Address</label>
               <input type="text" name="first-name" className="form-control"></input>
             </div>
           </div>
         </div>
-        <div className="row">
+     
         <div className="col-md-12">
-            <div className="form-group mb-3">
+            <div className="form-group mb-4">
               <label>Full Address</label>
               <textarea type="text" name="first-name" className="form-control"></textarea>
             </div>
-          </div>
+   
+          
+          
         </div>
         <div className="row">
+        <div className="col-md-4">
+            <div className="form-group">
+              <label>State</label>
+              <input type="text" name="first-name" className="form-control"></input>
+            </div>
+          </div>
+        <div className="col-md-4">
+            <div className="form-group">
+              <label>Zip Code</label>
+              <input type="text" name="first-name" className="form-control"></input>
+            </div>
+          </div>
         <div className="col-md-4">
             <div className="form-group mb-3">
               <label>City</label>
               <input type="text" name="first-name" className="form-control"></input>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="form-group mb-3">
-              <label>State</label>
-              <input type="text" name="first-name" className="form-control"></input>
-            </div>
-          </div>
-          <div className="col-md-4">
-            <div className="form-group mb-3">
-              <label>Zip Code</label>
-              <input type="text" name="first-name" className="form-control"></input>
-            </div>
-          </div>
+          
+          
 </div>
+<br />
 
-<h6 className="title"> Payment Information</h6>
 
 <div class="padding">
 <div class="row">
+<h6 className="title mt-3"> Payment Information</h6>
 <div class="col-sm-13">
 
 <strong>Credit Card</strong>&nbsp;&nbsp;
@@ -251,8 +257,8 @@ const CheckoutItems = (props) => {
       </div>
 
     
-      <div className="column is-two-fifths ml-5  ">
-      <div className="card ">
+      <div className="column is-two-fifths  ">
+      <div className="card ml-6">
         <div className="card-header ">
           <h6 className="title m-auto"> Cart </h6>
         </div>
@@ -275,13 +281,13 @@ const CheckoutItems = (props) => {
               <td>{cart[key].product.name}</td>
               <td>${cart[key].product.price}</td>
               <td >{cart[key].amount}</td>
-              <td className="has-text-centered">${cart[key].product.price * cart[key].amount}</td>
+              <td className="has-text-right">${cart[key].product.price * cart[key].amount}</td>
             </tr>
             )
           })}
           <tr>
-            <td colSpan="2" className="text-end fw-bold">Total</td>
-            <td colSpan="2" className="text-end fw-bold">${totalCartPrice}</td>
+            <td colSpan="2" className="text-end fw-bold has-text-left">Total</td>
+            <td colSpan="2" className="text-end fw-bold has-text-right">${totalCartPrice}</td>
           </tr>
           </tbody>     
         </table>

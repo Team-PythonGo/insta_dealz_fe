@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import withContext from "../withContext";
 import { Redirect } from "react-router-dom";
 import axios from 'axios';
+import { Figure } from "react-bootstrap";
+import headerAddProduct from '../images/header-add-product.png';
 
 const initState = {
   name: "",
@@ -60,20 +62,20 @@ class AddProduct extends Component {
       <Redirect to="/" />
     ) : (
       <>
-        <div className="hero is-primary ">
-          <div className="hero-body container">
-            <h4 className="title">Add Product</h4>
-          </div>
-        </div>
+        <Figure.Image width="100%"
+        max-height="30%"
+        src={headerAddProduct}
+        alt="product-header"
+      />
         <br />
         <br />
-        <form onSubmit={this.save}>
+        <form onSubmit={this.save} className="is-size-1">
           <div className="columns is-mobile is-centered">
             <div className="column is-one-third">
-              <div className="field">
-                <label className="label">Product Name: </label>
+              <div className="field ">
+                <label className="label is-size-4">Product Name: </label>
                 <input
-                  className="input"
+                  className="input is-size-4"
                   type="text"
                   name="name"
                   value={name}
@@ -82,9 +84,9 @@ class AddProduct extends Component {
                 />
               </div>
               <div className="field">
-                <label className="label">Price: </label>
+                <label className="label is-size-4">Price: </label>
                 <input
-                  className="input"
+                  className="input is-size-4"
                   type="number"
                   name="price"
                   value={price}
@@ -93,9 +95,9 @@ class AddProduct extends Component {
                 />
               </div>
               <div className="field">
-                <label className="label">Available in Stock: </label>
+                <label className="label is-size-4">Available in Stock: </label>
                 <input
-                  className="input"
+                  className="input is-size-4"
                   type="number"
                   name="stock"
                   value={stock}
@@ -103,9 +105,9 @@ class AddProduct extends Component {
                 />
               </div>
               <div className="field">
-                <label className="label">Short Description: </label>
+                <label className="label is-size-4">Short Description: </label>
                 <input
-                  className="input"
+                  className="input is-size-4"
                   type="text"
                   name="shortDesc"
                   value={shortDesc}
@@ -113,9 +115,9 @@ class AddProduct extends Component {
                 />
               </div>
               <div className="field">
-                <label className="label">Description: </label>
+                <label className="label is-size-4">Description: </label>
                 <textarea
-                  className="textarea"
+                  className="textarea is-size-4"
                   type="text"
                   rows="2"
                   style={{ resize: "none" }}
@@ -131,7 +133,7 @@ class AddProduct extends Component {
               )}
               <div className="field is-clearfix">
                 <button
-                  className="button is-primary is-outlined is-pulled-right"
+                  className="button is-primary is-outlined is-pulled-right is-size-4"
                   type="submit"
                   onClick={this.save}
                 >
