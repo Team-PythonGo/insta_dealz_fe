@@ -33,11 +33,11 @@ const ProductItem = (props) => {
             </b>
             
             <div className="is-size-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{product.description}</div>
-            {product.stock > 0 ? (
+            {/* {product.stock > 0 ? (
               <small>{product.stock + ' Available'}</small>
             ) : (
               <small className="has-text-danger">Out Of Stock</small>
-            )}
+            )} */}
             <div className="is-clearfix">
               <button
                 className="button is-small is-outlined is-size-6 is-primary   is-pulled-right"
