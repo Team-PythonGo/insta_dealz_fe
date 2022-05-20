@@ -1,153 +1,188 @@
 import React from 'react';
-import brandon from '../images/brandon.png'
+import brandon from '../images/brandon.png';
 import Figure from 'react-bootstrap/Figure';
 import headerTeam from '../images/header-team.png';
-
+import wenhao from '../images/wenhao.png';
+import david from '../images/david.png';
+import arthur from '../images/arthur.png';
 
 class AboutUs extends React.Component {
-  
-
   render() {
-    return(
+    return (
       <>
-      <Figure.Image width="100%"
-        max-height="50%"
-        src={headerTeam}
-        alt="product-header"
-      />
+        <div
+          className="columns is-centered"
+          style={{ width: '60%', height: '250px', margin: 'auto' }}
+        >
+          <Figure.Image
+            width="100%"
+            max-height="100px"
+            src={headerTeam}
+            alt="product-header"
+          />
+        </div>
 
-      <br></br>
-      <div className='columns is-fluid is-size-4'>
-        <div className='column is-half'>
-      <div class="card is-half ml-2">
-  <div class="card-image">
-    <figure class="image">
-      <img src="https://bulma.io/images/placeholders/100x100.png" alt="Placeholder"></img>
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder"></img>
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">Wenhao Piao</p>
-        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/wenhaopiao/">https://www.linkedin.com/in/wenhaopiao/</a></p>
-      </div>
-    </div>
+        <br></br>
+        <div
+          className="columns is-fluid is-size-4"
+          style={{ width: '70%', margin: 'auto' }}
+        >
+          <div className="column is-half">
+            <div
+              className="card is-half ml-2"
+              style={{ height: '600px', overflow: 'auto' }}
+            >
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-left">
+                    <Figure.Image
+                      width={300}
+                      height={250}
+                      src={wenhao}
+                      alt="wenhaoImage"
+                    />
+                  </div>
+                  <div className="media-content">
+                    <p className="title is-4">Wenhao Piao</p>
+                    <p className="subtitle is-6">
+                      <a href="https://www.linkedin.com/in/wenhaopiao/">
+                        https://www.linkedin.com/in/wenhaopiao/
+                      </a>
+                    </p>
+                  </div>
+                </div>
 
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br></br>
-      
-    </div>
-  </div>
-</div>
+                <div className="content">
+                  <ul>
+                    <li>SDE @ AWS</li>
+                    <li>Army Veteran</li>
+                    <li>Interested in AI, ML</li>
+                    <li>Passionate about new technologies</li>
+                    <li>Like hiking, biking</li>
+                  </ul>
+                  <br></br>
+                </div>
+              </div>
+            </div>
 
-<br></br>
+            <br></br>
 
-<div class="card is-half ml-2">
-  <div class="card-image">
-    <figure class="image">
-      <img src="https://bulma.io/images/placeholders/100x100.png" alt="Placeholder"></img>
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image ">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder"></img>
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">David Waiganjo</p>
-        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/david-waiganjo-8185aa80/">https://www.linkedin.com/in/david-waiganjo-8185aa80/</a></p>
-      </div>
-    </div>
+            <div
+              className="card is-half ml-2"
+              style={{ height: '600px', overflow: 'auto' }}
+            >
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-left">
+                    <Figure.Image
+                      width={300}
+                      height={250}
+                      src={david}
+                      alt="davidImage"
+                    />
+                  </div>
+                  <div className="media-content">
+                    <p className="title is-4">David Waiganjo</p>
+                    <p className="subtitle is-6">
+                      <a href="https://www.linkedin.com/in/david-waiganjo-8185aa80/">
+                        https://www.linkedin.com/in/david-waiganjo-8185aa80/
+                      </a>
+                    </p>
+                  </div>
+                </div>
 
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br></br>
-    </div>
-  </div>
-</div>
+                <div className="content">
+                  <ul>
+                    <li>Software Developer</li>
+                    <li>Lakewood, WA - Kenya</li>
+                    <li>US Air Force Veteran</li>
+                    <li>Background in Geospatial Science, Radiology</li>
+                    <li>Interested in Geospatial Software Development</li>
+                  </ul>
+                  <br></br>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div className="column is-half">
+            <div
+              className="card is-half ml-2"
+              style={{ height: '600px', overflow: 'auto' }}
+            >
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-left">
+                    <Figure.Image
+                      width={300}
+                      height={250}
+                      src={arthur}
+                      alt="arthurImage"
+                    />
+                  </div>
+                  <div className="media-content">
+                    <p className="title is-4">Arthur Lozano Jr</p>
+                    <p className="subtitle is-6">
+                      <a href="https://www.linkedin.com/in/arthur-lozano/">
+                        https://www.linkedin.com/in/arthur-lozano/
+                      </a>
+                    </p>
+                  </div>
+                </div>
 
-</div>
+                <div className="content">
+                  <ul>
+                    <li>US Air Force Veteran</li>
+                    <li>Software/Data engineer@Pagerduty</li>
+                    <li>Currently living in Seattle</li>
+                    <li>Excited for my journey ahead in tech</li>
+                  </ul>
+                  <br></br>
+                </div>
+              </div>
+            </div>
 
-<div className="column is-half">
-<div class="card is-half ml-0 mr-3">
-  <div class="card-image">
-    <figure class="image">
-      <img src="https://bulma.io/images/placeholders/100x100.png" alt="Placeholder"></img>
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-        <figure class="image ">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder"></img>
-        </figure>
-      </div>
-      <div class="media-content">
-        <p class="title is-4">Arthur Lozano Jr</p>
-        <p class="subtitle is-6"><a href="https://www.linkedin.com/in/arthur-lozano/">https://www.linkedin.com/in/arthur-lozano/</a></p>
-      </div>
-    </div>
+            <br></br>
 
-    <div class="content">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-      <a href="#">#css</a> <a href="#">#responsive</a>
-      <br></br>
-    </div>
-  </div>
-</div>
+            <div
+              className="card is-half ml-2"
+              style={{ height: '600px', overflow: 'auto' }}
+            >
+              <div className="card-image"></div>
+              <div className="card-content">
+                <div className="media">
+                  <div className="media-left">
+                    <Figure.Image
+                      width={300}
+                      height={250}
+                      src={brandon}
+                      alt="brandonImage"
+                    />
+                  </div>
+                  <div className="media-content">
+                    <p className="title is-4">Brandon Mizutani</p>
+                    <p className="subtitle is-6">
+                      <a href="https://www.linkedin.com/in/brandon-mizutani-273757213/">
+                        https://www.linkedin.com/in/brandon-mizutani-273757213/
+                      </a>
+                    </p>
+                  </div>
+                </div>
 
-<br></br>
-
-<div class="card is-half ml-0 mr-3">
-  <div class="card-image">
-  </div>
-  <div class="card-content">
-    <div class="media">
-      <div class="media-left">
-          <Figure.Image width={300}
-        height={250}
-        src={brandon}
-        alt="brandonImage"
-      />
-
-      </div>
-      <div class="media-content">
-        <p class="title is-3">Brandon Mizutani</p>
-        <p class="subtitle is-5"><a href="https://www.linkedin.com/in/brandon-mizutani-273757213/">https://www.linkedin.com/in/brandon-mizutani-273757213/</a></p>
-      </div>
-    </div>
-
-    <div class="content has-text-justified">
-    <p>I am a student at Code Fellows. I recently moved from Los Angeles to Seattle, Washington. I went to school for and worked in T.V. post-production. I decided to change my career after having time to reflect what would challenge and motivate me. I had prior experience in HTML & CSS. While I did learn a few JavaScript functions in college, it has only been through Code Fellows that I have gained a greater understanding of it and so much more. Upon completing Code Fellows, I hope to attain a career as a software developer, working with like-minded individuals who have the same passion for coding.</p>
-      <br></br>
-    </div>
-  </div>
-</div>
-
-</div>
-
-
-
-
-
-
-</div>
+                <div className="content has-text-justified">
+                  <ul>
+                    <li>Software Developer</li>
+                    <li>Post Production</li>
+                    <li>Prior Experience to Coding</li>
+                    <li>Ultimate Goal at Code Fellows</li>
+                  </ul>
+                  <br></br>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
-
     );
   }
 }

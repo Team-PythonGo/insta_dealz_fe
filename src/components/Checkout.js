@@ -1,15 +1,13 @@
 import withContext from '../withContext';
 import { Figure } from 'react-bootstrap';
 import headerCheckout from '../images/header-checkout.png';
-import ProductsCarousel from './ProductsCarousel';
 
 const CheckoutItems = (props) => {
   const { cart } = props.context;
-  console.log(cart);
-
   let totalCartPrice = 0;
-
   const handleClick = () => {
+    const { clearCart } = props.context;
+    clearCart();
     alert('Your Order has been Processed!');
   };
 
@@ -17,7 +15,7 @@ const CheckoutItems = (props) => {
     <>
       <div
         className="columns is-centered"
-        style={{ width: '60%', height: '200px', margin: 'auto' }}
+        style={{ width: '60%', height: '250px', margin: 'auto' }}
       >
         <Figure.Image
           width="100%"
@@ -26,7 +24,6 @@ const CheckoutItems = (props) => {
           alt="product-header"
         />
       </div>
-      <ProductsCarousel />
       <div
         className="columns is-size-4"
         style={{ width: '65%', margin: 'auto' }}
@@ -127,21 +124,21 @@ const CheckoutItems = (props) => {
               </div>
               <br />
 
-              <div class="padding">
-                <div class="row">
+              <div className="padding">
+                <div className="row">
                   <h6 className="title mt-3"> Payment Information</h6>
-                  <div class="col-sm-13">
+                  <div className="col-sm-13">
                     <strong>Credit Card</strong>&nbsp;&nbsp;
                     <small>enter your credit card information below</small>
                   </div>
 
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <div className="form-group">
                         <br />
-                        <label for="name">Name</label>
+                        <label htmlFor="name">Name</label>
                         <input
-                          class="form-control"
+                          className="form-control"
                           id="name"
                           type="text"
                           placeholder="Enter your name"
@@ -150,29 +147,29 @@ const CheckoutItems = (props) => {
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="col-sm-13">
-                      <div class="form-group">
+                  <div className="row">
+                    <div className="col-sm-13">
+                      <div className="form-group">
                         <br />
-                        <label for="ccnumber">Credit Card Number</label>
+                        <label htmlFor="ccnumber">Credit Card Number</label>
 
-                        <div class="input-group">
+                        <div className="input-group">
                           <input
-                            class="form-control"
+                            className="form-control"
                             type="text"
                             placeholder="0000 0000 0000 0000"
-                            autocomplete="email"
+                            autoComplete="email"
                           ></input>
 
-                          <div class="input-group-append">
-                            <div class="input-group-append">
-                              <span class="input-group-text">
+                          <div className="input-group-append">
+                            <div className="input-group-append">
+                              <span className="input-group-text">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   width="25"
                                   height="25"
                                   fill="currentColor"
-                                  class="bi bi-credit-card"
+                                  className="bi bi-credit-card"
                                   viewBox="0 0 16 16"
                                 >
                                   <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
@@ -186,12 +183,12 @@ const CheckoutItems = (props) => {
                     </div>
                   </div>
 
-                  <div class="row">
-                    <div class="form-group col-sm-4">
+                  <div className="row">
+                    <div className="form-group col-sm-4">
                       <br />
 
-                      <label for="ccmonth">Month</label>
-                      <select class="form-control" id="ccmonth">
+                      <label htmlFor="ccmonth">Month</label>
+                      <select className="form-control" id="ccmonth">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -206,11 +203,11 @@ const CheckoutItems = (props) => {
                         <option>12</option>
                       </select>
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div className="form-group col-sm-4">
                       <br />
 
-                      <label for="ccyear">Year</label>
-                      <select class="form-control" id="ccyear">
+                      <label htmlFor="ccyear">Year</label>
+                      <select className="form-control" id="ccyear">
                         <option>2022</option>
                         <option>2023</option>
                         <option>2024</option>
@@ -219,13 +216,13 @@ const CheckoutItems = (props) => {
                         <option>2027</option>
                       </select>
                     </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
+                    <div className="col-sm-4">
+                      <div className="form-group">
                         <br />
 
-                        <label for="cvv">CVV/CVC</label>
+                        <label htmlFor="cvv">CVV/CVC</label>
                         <input
-                          class="form-control"
+                          className="form-control"
                           id="cvv"
                           type="text"
                           placeholder="123"

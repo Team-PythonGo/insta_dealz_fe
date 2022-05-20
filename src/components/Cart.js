@@ -14,7 +14,7 @@ const Cart = (props) => {
     <>
       <div
         className="columns is-centered"
-        style={{ width: '60%', height: '200px', margin: 'auto' }}
+        style={{ width: '60%', height: '250px', margin: 'auto' }}
       >
         <Figure.Image
           width="100%"

@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import withContext from '../withContext';
 import '../CSS/ProductItem.css';
-import { Figure } from 'react-bootstrap';
+import { Figure, Badge } from 'react-bootstrap';
 
 const ProductItem = (props) => {
   const { product } = props;
@@ -30,14 +30,14 @@ const ProductItem = (props) => {
           <div className="media-content is-size-6">
             <b className="is-size-4" style={{ textTransform: 'capitalize' }}>
               {product.name} &nbsp;
-              <span className="tag is-primary ">${product.price}</span>
+              <span className="tag is-primary">${product.price}</span>
             </b>
 
             <div className="is-size-6">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{product.description}
             </div>
             {product.stock > 0 ? (
-              <small>{product.stock + ' Available'}</small>
+              <Badge bg="success">{product.stock + ' Available'}</Badge>
             ) : (
               <small className="has-text-danger">Out Of Stock</small>
             )}
