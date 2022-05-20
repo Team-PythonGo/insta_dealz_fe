@@ -17,6 +17,7 @@ import logo from './images/logo.png';
 import AboutUs from './components/AboutUs';
 import { Figure } from 'react-bootstrap';
 import './App.css';
+import Profile from './components/UserProfile';
 
 class App extends Component {
   constructor(props) {
@@ -99,6 +100,8 @@ class App extends Component {
 
   addToCart = (cartItem) => {
     let cart = this.state.cart;
+    console.log('cartItem', cartItem);
+    console.log(this.state.cart);
     if (cart[cartItem.id]) {
       cart[cartItem.id].amount += cartItem.amount;
     } else {
@@ -155,7 +158,6 @@ class App extends Component {
     this.clearCart();
   };
   handleSelectedProduct = (selectedProduct) => {
-    console.log(selectedProduct);
     this.setState({
       selectedProduct,
     });
@@ -187,8 +189,8 @@ class App extends Component {
               <div className="navbar-brand">
                 <Link to="/">
                   <Figure.Image
-                    width={50}
-                    height={50}
+                    width={70}
+                    height={60}
                     src={logo}
                     alt="brandonImage"
                   />
@@ -229,9 +231,16 @@ class App extends Component {
                     className="tag is-primary"
                     style={{ marginLeft: '5px' }}
                   >
-                    {Object.keys(this.state.cart).length}
+                    {Object.keys(this.state.cart).reduce(
+                      (prev, current) => prev + this.state.cart[current].amount,
+                      0
+                    )}
                   </span>
                 </Link>
+                <Link to="/aboutus" className="navbar-item">
+                  About Us
+                </Link>
+                {/* <Profile></Profile> */}
                 {isLoading ? (
                   <div>Loading ...</div>
                 ) : isAuthenticated ? (
